@@ -1,8 +1,10 @@
 <div id="catalogoContainer">
-  <div *ngFor="let juego of juegos">
-    <div class="cardContainer">
+  <div *ngFor="let juego of juegos" class="cardContainer">
+    <mat-card>
       <img src="{{ juego.thumbnail }}" class="thumbnail" />
-      <a>{{ juego.title }}</a>
-    </div>
+      <mat-card-content class="title">
+        <a href="">{{ juego.title }}</a>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

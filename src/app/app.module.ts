@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { InfoViewComponent } from './info-view/info-view.component';
 import { JuegosService } from './api-service/juegos.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,12 @@ import { JuegosService } from './api-service/juegos.service';
     CatalogoComponent,
     InfoViewComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+  ],
   providers: [JuegosService],
   bootstrap: [AppComponent],
 })

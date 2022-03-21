@@ -1,5 +1,8 @@
-<table>
-  <tr *ngFor="let juego of juegos">
-    <th>{{ juego.title }}</th>
-  </tr>
-</table>
+<div id="catalogoContainer">
+  <div *ngFor="let juego of juegos">
+    <div class="cardContainer">
+      <img src="{{ juego.thumbnail }}" class="thumbnail" />
+      <a>{{ juego.title }}</a>
+    </div>
+  </div>
+</div>

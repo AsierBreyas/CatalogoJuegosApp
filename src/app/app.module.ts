@@ -40,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     FormsModule,
     MatIconModule,
+
     ToastrModule.forRoot(),
   ],
   providers: [JuegosService],

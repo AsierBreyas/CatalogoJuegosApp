@@ -15,4 +15,8 @@ export class LoginComponent implements OnInit {
     this.toastr.toastrConfig.positionClass = 'toast-top-center';
     this.toastr.error('Correo o contraseña mal introducida');
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bd4a5827ba2cf291538a67ebc2170f90da0d1962

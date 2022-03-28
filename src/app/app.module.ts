@@ -16,6 +16,7 @@ import { MisjuegosComponent } from './misjuegos/misjuegos.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     AppRoutingModule,
     FormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [JuegosService],
   bootstrap: [AppComponent],

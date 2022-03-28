@@ -5,12 +5,14 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { JuegoComponent } from './juego/juego.component';
 import { MisjuegosComponent } from './misjuegos/misjuegos.component';
+import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'mis-juegos', component: MisjuegosComponent },
   { path: 'juegos/:id', component: JuegoComponent },
-  { path: '', component: CatalogoComponent },
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({

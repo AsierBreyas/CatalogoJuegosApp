@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
+  log="p";
   menuOption = 'inicio';
   constructor(public router: Router) {}
 

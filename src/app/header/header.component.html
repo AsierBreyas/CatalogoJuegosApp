@@ -1,25 +1,26 @@
 <nav>
   <ul>
     <li>
-      <img
-        src="../../assets/img/pngtree-neon-style-gamepad-png-image_2361342.png"
-      />
+      <img src="../../assets/img/pngtree-neon-style-gamepad-png-image_2361342.png" />
     </li>
-    <li
-      class="lOpciones"
-      routerLink="/catalogo"
-      routerLinkActive="active"
-      role="link"
-    >
+    <li class="lOpciones" routerLink="/catalogo" routerLinkActive="active" role="link">
       <h1>Inicio</h1>
     </li>
-    <li
-      class="lOpciones"
-      routerLink="/mis-juegos"
-      routerLinkActive="active"
-      role="link"
-    >
+    <li class="lOpciones" routerLink="/mis-juegos" routerLinkActive="active" role="link">
       <h1>Mis juegos</h1>
+    </li>
+    <li class="lOpciones" routerLink="/login" routerLinkActive="active" role="link">
+      <h1>
+        <ng-container *ngIf="log; then logIn else logOut">
+        </ng-container>
+        <ng-template #logIn>
+          <label>Salir <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon></label>          
+        </ng-template>
+        <ng-template #logOut>
+          <label>Iniciar sesion <mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon></label>
+        </ng-template>
+
+      </h1>
     </li>
   </ul>
 </nav>

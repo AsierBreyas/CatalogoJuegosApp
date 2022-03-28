@@ -1,12 +1,10 @@
-<app-header></app-header>
 <div id="catalogoContainer">
   <div *ngFor="let juego of juegos" class="cardContainer">
     <mat-card>
       <img src="{{ juego.thumbnail }}" class="thumbnail" />
       <mat-card-content class="title">
-        <a href="">{{ juego.title }}</a>
+        <a routerLink="/juegos/{{juego.id}}">{{juego.title }}</a>
       </mat-card-content>
     </mat-card>
   </div>
 </div>
-<app-footer></app-footer>

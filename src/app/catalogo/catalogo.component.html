@@ -1,12 +1,22 @@
 <app-header></app-header>
 <div id="catalogoContainer">
   <div *ngFor="let juego of juegos" class="cardContainer">
-    <mat-card>
-      <img src="{{ juego.thumbnail }}" class="thumbnail" />
-      <mat-card-content class="title">
-        <a href="">{{ juego.title }}</a>
-      </mat-card-content>
-    </mat-card>
+    <div class="card text-white bg-secondary mb-3">
+      <img
+        class="card-img-top"
+        src="{{ juego.thumbnail }}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <div class="title">
+          <h5 class="card-title">
+            {{ juego.title }}
+          </h5>
+        </div>
+        <span class="badge rounded-pill bg-info">{{ juego.genre }}</span>
+        <p class="card-text">{{ juego.short_description }}</p>
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

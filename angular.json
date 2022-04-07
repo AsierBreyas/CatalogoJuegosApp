@@ -31,12 +31,15 @@
             "inlineStyleLanguage": "sass",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/custom-theme.scss",
               "src/styles.sass",
               "./node_modules/ngx-toastr/toastr.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/@splidejs/splide/dist/css/splide.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/@splidejs/splide/dist/js/splide.min.js"
+            ]
           },
           "configurations": {
             "production": {

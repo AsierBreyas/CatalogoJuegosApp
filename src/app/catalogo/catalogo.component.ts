@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JuegosService } from '../api-service/juegos.service';
-import { Juegos } from '../Models/juegos';
+import { Catalogo } from '../Models/Catalogo';
+import { Juego } from '../Models/Juego';
 
 @Component({
   selector: 'app-catalogo',
@@ -8,15 +8,14 @@ import { Juegos } from '../Models/juegos';
   styleUrls: ['./catalogo.component.sass'],
 })
 export class CatalogoComponent implements OnInit {
-  juegos!: Juegos[];
-  juego: Juegos = new Juegos();
-
-  constructor(private juegosService: JuegosService) {}
+  juegos: Juego[] = [];
+  constructor() { }
 
   ngOnInit(): void {
-    this.juegosService.getAllJuegos().subscribe((data) => {
-      console.log(data);
-      this.juegos = data;
-    });
+    setInterval(() => {
+      if (!this.juegos.length) {
+        this.juegos = Catalogo.juegos;
+      }
+    }, 50);
   }
 }

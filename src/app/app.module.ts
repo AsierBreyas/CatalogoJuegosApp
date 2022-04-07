@@ -32,7 +32,7 @@ import { FiltroComponent } from './filtro/filtro.component';
     JuegoComponent,
     MisjuegosComponent,
     RegisterComponent,
-    FiltroComponent,
+    FiltroComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +42,10 @@ import { FiltroComponent } from './filtro/filtro.component';
     AppRoutingModule,
     FormsModule,
     MatIconModule,
-
+    
     ToastrModule.forRoot(),
   ],
-  providers: [JuegosService],
+  providers: [JuegosService,CatalogoComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

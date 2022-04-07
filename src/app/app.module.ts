@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FiltroComponent } from './filtro/filtro.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
     JuegoComponent,
     MisjuegosComponent,
     RegisterComponent,
+    FiltroComponent,
   ],
   imports: [
     BrowserModule,

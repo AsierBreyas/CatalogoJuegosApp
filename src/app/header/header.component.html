@@ -1,26 +1,25 @@
-<nav>
-  <ul>
-    <li>
-      <img src="../../assets/img/pngtree-neon-style-gamepad-png-image_2361342.png" />
-    </li>
-    <li class="lOpciones" routerLink="/catalogo" routerLinkActive="active" role="link">
-      <h1>Inicio</h1>
-    </li>
-    <li class="lOpciones" routerLink="/mis-juegos" routerLinkActive="active" role="link">
-      <h1>Mis juegos</h1>
-    </li>
-    <li class="lOpciones" routerLink="/login" routerLinkActive="active" role="link">
-      <h1>
-        <ng-container *ngIf="log; then logIn else logOut">
-        </ng-container>
-        <ng-template #logIn>
-          <label>Salir <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon></label>          
-        </ng-template>
-        <ng-template #logOut>
-          <label>Iniciar sesion <mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon></label>
-        </ng-template>
-
-      </h1>
-    </li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+  <img
+    class="logo"
+    src="../../assets/img/pngtree-neon-style-gamepad-png-image_2361342.png"
+  />
+  <a class="navbar-brand" href="#">Home</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">My Games </a>
+      </li>
+    </ul>
+  </div>
 </nav>

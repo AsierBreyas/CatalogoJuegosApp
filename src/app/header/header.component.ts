@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
   fCatalogo() {
     this.menuOption = 'catalogo';
-    this.router.navigateByUrl('catalogo');
+    this.router.navigateByUrl('');
   }
   ngOnInit(): void {}
 }

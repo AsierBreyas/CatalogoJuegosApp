@@ -1,53 +1,180 @@
+.dTopBtnBack
+    display: none
+    img
+        margin-right: 5px
 h1
     margin-top: 2%
     text-align: center
-    font-size: 3.5rem
-    color: #212529
+    font-size: 3    rem
+    color: #fff
+    display: flex
+    align-items: center
+    justify-content: center
+    .imgFavStar
+        width: 3rem
+        margin-right: 10px
+        transition: 0.25s
+    .imgFavStar:hover
+        transform: scale(1.1)
+        filter: drop-shadow(0 0 2px #e8f00d) drop-shadow(0 0 1px yellow)
+        cursor: pointer
+
     a
         text-decoration: none
+        filter: drop-shadow(0 0 3px blue) drop-shadow(0 0 4px #0DCAF0)
+
         img
             width: 2rem
             margin-left: 15px
             transition: 0.25s
         img:hover
-            transform: scale(1.15)        
+            filter: drop-shadow(0 0 2px #0DCAF0) drop-shadow(0 0 1px blue)
+            transform: scale(1.15)
+
 .dMainContainer
     width: 95%
-    max-width: 1200px
     display: flex
+    justify-content: space-around
+    align-items: center
     margin: 0 auto
+    padding: 0 0 75px 0
     div
-        margin: 10px
+        margin: 5px
         p
             span
                 font-weight: bold
     .dLeft
-        width: 70%
-        //background-color: blue
+        align-self: flex-start
+        margin-top: 2%
+        .sectionSlide
+            width: 500px
+            margin: auto 20px
+            border: 5px solid #212529
+            border-radius: 15px
+            background-color: #212529
+            .liImgs
+                width: 100%
+                height: 300px
 
+                .imgCarrousel
+                    width: 100%
+                    height: 100%
+                    border-radius: 10px
+                    object-fit: cover
+
+    .dCenter
+        .dDescrip
+
+            max-width: 500px
+            background-color: #4d5155
+            color: #fff
+            padding: 25px 30px 15px 30px
+            border: 7px solid #212529
+            border-radius: 10px
+
+            text-align: justify
+        .dBotones
+            display: flex
+            justify-content: space-around
+            margin-top: 50px
     .dRight
-        width: 30%
+        margin-top: 2%
         background-color: #4d5155
-        padding: 25px 30px 15px 30px
+        padding: 25px 20px 15px 20px
         border: 7px solid #212529
         border-radius: 10px
         color: #fff
         h4
             font-weight: lighter
-            font-size: 2.5rem
-            
-.sectionSlide
-    width: 750px
-    margin: 50px auto
-    border: 8px solid 
-    border-radius: 15px
-    background-color: #212529
-    .liImgs
-        width: 100%
-        height: 420px
+            font-size: 1.75rem
+        p
+            font-size: 0.75rem
 
-        .imgCarrousel
-            width: 100%
-            height: 100%
-            border-radius: 10px
-            object-fit: cover
+        .dMinReqs
+            margin-top: 10px
+            h6
+                text-decoration: underline
+            p
+                margin-left: 5px
+
+@media (max-width: 1225px)
+    .dTopBtnBack
+        display: block
+        margin: 20px
+        position: absolute
+        height: 40px
+        width: 85px
+        padding: 0px 5px 0px 5px
+        font-size: 0.85rem
+        img
+            width: 32px
+    .dMainContainer
+        margin-top: 40px
+        flex-flow: row wrap
+        .dLeft
+            order: 1
+        .dCenter
+            order: 3
+            width: 90%
+            .dBotones
+                display: none
+        .dRight
+            order: 2
+@media (max-width: 975px)
+    h1        
+        font-size: 2rem
+        span
+            width: fit-content
+    .dMainContainer
+        margin-top: 40px
+        flex-flow: row wrap
+        .dLeft
+            order: 1
+            .sectionSlide
+                width: 650px
+                margin: auto 20px
+                border: 5px solid #212529
+                border-radius: 15px
+                background-color: #212529
+            .liImgs
+                width: 100%
+                height: 400px
+@media (max-width: 750px)
+    .dMainContainer
+        .dLeft
+            order: 1
+            .sectionSlide
+                width: 500px
+                margin: auto 20px
+                border: 5px solid #212529
+                border-radius: 15px
+                background-color: #212529
+            .liImgs
+                width: 100%
+                height: 300px
+@media (max-width: 550px)
+    h1        
+        font-size: 1.5rem
+        
+    .dTopBtnBack
+        display: block
+        margin: 10px
+        position: absolute
+        height: 35px
+        width: 65px
+        padding: 0px 4px 0px 4px
+        font-size: 0.7rem
+        img
+            width: 26px
+    .dMainContainer
+        .dLeft
+            order: 1
+            .sectionSlide
+                width: 400px
+                margin: auto 20px
+                border: 5px solid #212529
+                border-radius: 15px
+                background-color: #212529
+                .liImgs
+                    width: 100%
+                    height: 200px

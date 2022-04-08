@@ -1,33 +1,55 @@
+<button class="btn btn-light btn-outline-primary dTopBtnBack" type="submit" (click)="retroceder()"><img
+        src="../../assets/img/backBlueWhite.png" alt="">Back</button>
 <ng-container *ngIf="juego">
-    <h1>{{juego.title}}<a href="{{juego.game_url}}" target="_blank"><img src="./assets/img/extLink.svg"></a></h1>
+
     <div class="dMainContainer">
         <div class="dLeft">
-            <p>{{juego.description}}</p><br>    
+            <h1>
+                <img id="imgStar" class="imgFavStar" src="./assets/img/baseStar.png" (click)="favs()">
+                <span>{{juego.title}}</span>
+                <a href="{{juego.game_url}}" target="_blank"><img src="./assets/img/extLink.svg"></a>
+            </h1>
+            <section class="splide sectionSlide" aria-label="Splide Basic HTML Example">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li *ngFor="let img of imagenes(juego)" class="splide__slide liImgs ">
+                            <img src="{{img}}" alt="" class="imgCarrousel">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="dCenter">
+            <div class="dDescrip">
+                <p>{{juego.short_description}}{{juego.short_description}}{{juego.short_description}}{{juego.short_description}}
+                </p><br>
+                <div class="dBotones">
+                    <!-- <button class="btn btn-light btn-outline-primary" type="submit">Add to Favs</button> -->
+                    <button class="btn btn-light btn-outline-primary" type="submit" (click)="retroceder()">Go
+                        back</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="dRight">
+            <h4>Specifications</h4><br>
             <p><span>Platform: </span>{{juego.plataform}}</p>
             <p><span>Publisher: </span>{{juego.publisher}}</p>
             <p><span>Developer: </span>{{juego.developer}}</p>
             <p><span>Release date: </span>{{dateFormat(juego.release_date)}}</p>
             <p><span>Genre: </span>{{juego.genre}}</p>
-            
+            <div class="dMinReqs">
+                <h6>Minimun requirements</h6><br>
+                <p><span>Operating System: </span>{{juego.os}}</p>
+                <p><span>Processor: </span>{{juego.processor}}</p>
+                <p><span>Memory: </span>{{juego.memory}}</p>
+                <p><span>Graphics date: </span>{{juego.graphics}}</p>
+                <p><span>Storage: </span>{{juego.storage}}</p>
+            </div>
+
 
         </div>
-        <div class="dRight">
-            <h4>Minimun requirements</h4><br>
-            <p><span>Operating System: </span>{{juego.os}}</p>
-            <p><span>Processor: </span>{{juego.processor}}</p>
-            <p><span>Memory: </span>{{juego.memory}}</p>
-            <p><span>Graphics date: </span>{{juego.graphics}}</p>
-            <p><span>Storage: </span>{{juego.storage}}</p>
-        </div>
     </div>
-    
-    <section class="splide sectionSlide" aria-label="Splide Basic HTML Example">
-        <div class="splide__track">
-            <ul class="splide__list">
-                <li *ngFor="let img of imagenes(juego)" class="splide__slide liImgs ">
-                    <img src="{{img}}" alt="" class="imgCarrousel">
-                </li>
-            </ul>
-        </div>
-    </section>
+
 </ng-container>

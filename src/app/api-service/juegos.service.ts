@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { Catalogo } from '../Models/Catalogo';
+import { Juego } from '../Models/Juego';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +11,16 @@ import { Catalogo } from '../Models/Catalogo';
 export class JuegosService {
   public url = environment.apiUrl + '/CatalogoJuegos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getAllJuegos(): void {
-    this.http.get(`${this.url}`).subscribe((data:any) => {
-      Catalogo.juegos=data;
+    this.http.get(`${this.url}`).subscribe((data: any) => {
+      Catalogo.juegos = data;
     });
+  }
+
+  public getJuego(id: number) {
+    const route = `${this.url}/${id}`;
+    return this.http.get<Juego>(route);
   }
 }

@@ -5,36 +5,34 @@ import { Catalogo } from '../Models/Catalogo';
 import Splide from '@splidejs/splide';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
-
+import { JuegosService } from '../api-service/juegos.service';
+import { Juego } from '../Models/Juego';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-juego',
   templateUrl: './juego.component.html',
-  styleUrls: ['./juego.component.sass']
+  styleUrls: ['./juego.component.sass'],
 })
 export class JuegoComponent implements OnInit {
-
-  public juego: any;
   juegoId = 0;
+  juego: Juego;
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(
+    private activatedRoute: ActivatedRoute,
     private catalogoComponent: CatalogoComponent,
-    private toastr: ToastrService, private _location: Location) { }
+    private toastr: ToastrService,
+    private _location: Location,
+    private juegoService: JuegosService
+  ) {}
 
   loaded = false;
   imgChange = true;
   ngOnInit(): void {
-    setInterval(() => {
-      if (Catalogo.juegos.length && !this.loaded) {
-        this.init();
-        this.loaded = true;
-      }
-    }, 50);
-
+    this.init();
   }
 
   favs() {
-
     // Conexion a tabla dela biblioteca del usuario
 
     //----------------------------------------------
@@ -42,28 +40,30 @@ export class JuegoComponent implements OnInit {
     this.toastr.toastrConfig.positionClass = 'toast-top-center';
     if (this.imgChange) {
       // @ts-ignore
-      document.getElementById("imgStar").src = "./assets/img/addedStar.png";
-      this.toastr.success("", 'Game added to favourites', {
-        titleClass: "center",
-        messageClass: "center"
+      document.getElementById('imgStar').src = './assets/img/addedStar.png';
+      this.toastr.success('', 'Game added to favourites', {
+        titleClass: 'center',
+        messageClass: 'center',
       });
     } else {
       // @ts-ignore
-      document.getElementById("imgStar").src = "./assets/img/baseStar.png";
-      this.toastr.success("", 'Game deleted from favourites', {
-        titleClass: "center",
-        messageClass: "center"
+      document.getElementById('imgStar').src = './assets/img/baseStar.png';
+      this.toastr.success('', 'Game deleted from favourites', {
+        titleClass: 'center',
+        messageClass: 'center',
       });
-      
     }
-    this.imgChange=!this.imgChange;
+    this.imgChange = !this.imgChange;
   }
   retroceder() {
     this._location.back();
   }
   init() {
-    this.juegoId = +(this.activatedRoute.snapshot.paramMap.get("id") ?? 0);
-    this.juego = Catalogo.juegos.find(i => i.juegoId == this.juegoId);
+    this.juegoId = +(this.activatedRoute.snapshot.paramMap.get('id') ?? 0);
+    this.juegoService.getJuego(this.juegoId).subscribe((response: Juego) => {
+      this.juego = response;
+    });
+    console.log(this.juego);
     console.log(this.juegoId, this.catalogoComponent.juegos);
     var splide = new Splide('.splide', {
       type: 'fade',

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'mis-juegos', component: MisjuegosComponent },
   { path: 'juegos/:id', component: JuegoComponent },
-  { path: '', component: CatalogoComponent },
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({

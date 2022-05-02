@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { JuegoComponent } from './juego/juego.component';
 import { MisjuegosComponent } from './misjuegos/misjuegos.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FiltroComponent } from './filtro/filtro.component';
@@ -42,6 +42,8 @@ import { FiltroComponent } from './filtro/filtro.component';
     AppRoutingModule,
     FormsModule,
     MatIconModule,
+    ReactiveFormsModule,
+
     
     ToastrModule.forRoot(),
   ],

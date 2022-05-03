@@ -1,3 +1,9 @@
-<div>
-    
-</div>
+<form [formGroup]="form">
+  <label>Título</label>
+  <input [type]="'text'" [id]="'title'" [formControlName]="'title'">
+  <label>Genero</label>
+  <input [type]="'text'" [id]="'genre'" [formControlName]="'genre'">
+  <label>Año de salida</label>
+  <input [type]="'text'" [id]="'year'" [formControlName]="'year'">
+  <button (click)="submitForm()">Filtrar</button>
+</form>>

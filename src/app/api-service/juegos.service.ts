@@ -23,4 +23,11 @@ export class JuegosService {
     const route = `${this.url}/${id}`;
     return this.http.get<Juego>(route);
   }
+
+  public getJuegosFiltered(filtro: { title?: string, genre?: string, year?: string}){
+    const route = `${this.url}/filter`
+    return this.http.get(route).subscribe((data: any) => {
+      Catalogo.juegos = data
+    })
+  }
 }

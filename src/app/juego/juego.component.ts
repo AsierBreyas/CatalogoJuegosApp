@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class JuegoComponent implements OnInit {
   juegoId = 0;
-  juego: Juego;
+  juego: Juego = new Juego;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -63,8 +63,7 @@ export class JuegoComponent implements OnInit {
     this.juegoService.getJuego(this.juegoId).subscribe((response: Juego) => {
       this.juego = response;
     });
-    console.log(this.juego);
-    console.log(this.juegoId, this.catalogoComponent.juegos);
+
     var splide = new Splide('.splide', {
       type: 'fade',
       rewind: true,
@@ -75,7 +74,7 @@ export class JuegoComponent implements OnInit {
     splide.mount();
   }
 
-  imagenes(j: any) {
+  imagenes(j: Juego) {
     return j.screenshots.split(',');
   }
   dateFormat(d: any) {

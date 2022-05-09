@@ -1,14 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
   <img class="logo" src="../../assets/img/pngtree-neon-style-gamepad-png-image_2361342.png" />
-  <a class="navbar-brand" routerLink="" role="link">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li>
+        <a class="navbar-brand" routerLink="" role="link">Home</a>
+      </li>
       <li class="nav-item active">
-        <a class="nav-link"  routerLink="mis-juegos" role="link">My Games </a>
+        <a class="nav-link" routerLink="mis-juegos" role="link">My Games </a>
+      </li>
+      <li>
+        <img src="../../assets/img/logout.png" class="logout" alt="">
       </li>
     </ul>
   </div>

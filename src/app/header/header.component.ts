@@ -23,5 +23,9 @@ export class HeaderComponent implements OnInit {
     this.menuOption = 'catalogo';
     this.router.navigateByUrl('');
   }
+  fLogout(){
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
+  }
   ngOnInit(): void {}
 }

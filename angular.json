@@ -38,7 +38,9 @@
               "./node_modules/@splidejs/splide/dist/css/splide.min.css"
             ],
             "scripts": [
-              "./node_modules/@splidejs/splide/dist/js/splide.min.js"
+              "./node_modules/@splidejs/splide/dist/js/splide.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

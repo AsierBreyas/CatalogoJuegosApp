@@ -2,15 +2,15 @@
     <div class="container">
       <div class="form">
         <form action="#" class="register-form">
-          <input type="text" name="e-mail" placeholder="E-mail" />
-          <input type="text" name="name" placeholder="Name" />
-          <input type="password" name="password" placeholder="Password" />
+          <input type="text" [formControl]="email" name="e-mail" placeholder="E-mail" />
+          <input type="text" [formControl]="name" name="name" placeholder="Name" />
+          <input type="password" [formControl]="password" name="password" placeholder="Password" />
           <input
             type="password"
             name="passwordCheck"
             placeholder="Confirm Password"
           />
-          <button type="submit" class="btn">Submit</button>
+          <button type="submit" (click)="submitForm()" class="btn">Submit</button>
           <p class="message">
             Already registered?
             <a routerLink="/login" routerLinkActive="active">Log in</a>

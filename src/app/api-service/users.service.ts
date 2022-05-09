@@ -15,10 +15,12 @@ export class UsersService {
 
   constructor(private http: HttpClient, private toaster:ToastrService) { }
 
-  public createUser(user: User): any {
-    this.http.post<User>(`${this.url}`, user).subscribe((data: any) => {
-      Users.usuarios = data;
-    })
+  public createUser(register: User): Observable<User | void> {
+    return this.http.post<User>(this.url , register).pipe(map((user: User) => {
+      localStorage.setItem('user', JSON.stringify(user));
+      return user;
+    }),
+    catchError((err) => this.registerError(err)));
   }
 
   public authUser(auth: AuthUser): Observable<AuthUser | void>  {
@@ -30,6 +32,12 @@ export class UsersService {
   }
   private handleError(err): Observable<never>{
     let errorMessage = 'Correo o contraseña mal introducida';
+    this.toaster.toastrConfig.positionClass = 'toast-top-center';
+    this.toaster.error(errorMessage);
+    return throwError(errorMessage);
+  }
+  private registerError(err): Observable<never>{
+    let errorMessage = 'Error en la creacion de usuario';
     this.toaster.toastrConfig.positionClass = 'toast-top-center';
     this.toaster.error(errorMessage);
     return throwError(errorMessage);

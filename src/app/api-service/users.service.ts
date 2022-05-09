@@ -17,7 +17,7 @@ export class UsersService {
 
   public createUser(register: User): Observable<User | void> {
     return this.http.post<User>(this.url , register).pipe(map((user: User) => {
-      localStorage.setItem('user', JSON.stringify(user));
+      this.createSuccess();
       return user;
     }),
     catchError((err) => this.registerError(err)));
@@ -41,5 +41,10 @@ export class UsersService {
     this.toaster.toastrConfig.positionClass = 'toast-top-center';
     this.toaster.error(errorMessage);
     return throwError(errorMessage);
+  }
+  private createSuccess(): any{
+    let successMessage = 'User created successfully';
+    this.toaster.toastrConfig.positionClass = 'toast-top-center';
+    this.toaster.success(successMessage); 
   }
 }

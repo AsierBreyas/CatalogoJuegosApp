@@ -1,3 +1,4 @@
+<app-filtro></app-filtro>
 <div id="catalogoContainer">
   <ng-container *ngIf="juegos">
     <div *ngFor="let juego of juegos" class="cardContainer" routerLink="juegos/{{juego.juegoId}}" role="link">
@@ -17,5 +18,3 @@
   </ng-container>
 
 </div>
-
-<app-filtro></app-filtro>

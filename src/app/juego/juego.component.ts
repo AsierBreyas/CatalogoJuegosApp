@@ -8,6 +8,9 @@ import { Location } from '@angular/common';
 import { JuegosService } from '../api-service/juegos.service';
 import { Juego } from '../Models/Juego';
 import { Observable } from 'rxjs';
+import { BibliotecaService } from '../api-service/biblioteca.service';
+import { Biblioteca } from '../Models/Biblioteca';
+import { User } from '../Models/User';
 
 @Component({
   selector: 'app-juego',
@@ -17,13 +20,14 @@ import { Observable } from 'rxjs';
 export class JuegoComponent implements OnInit {
   juegoId = 0;
   juego: Juego = new Juego;
+  biblioteca: Biblioteca = new Biblioteca;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private catalogoComponent: CatalogoComponent,
     private toastr: ToastrService,
     private _location: Location,
-    private juegoService: JuegosService
+    private juegoService: JuegosService,
+    private bibliotecaService: BibliotecaService
   ) {}
 
   loaded = false;
@@ -41,6 +45,10 @@ export class JuegoComponent implements OnInit {
     if (this.imgChange) {
       // @ts-ignore
       document.getElementById('imgStar').src = './assets/img/addedStar.png';
+      let user = JSON.parse(localStorage.getItem('user') || '{}');
+      this.biblioteca.UserId = user.id;
+      this.biblioteca.JuegoId = this.juego.juegoId;
+      this.bibliotecaService.addGame(this.biblioteca);
       this.toastr.success('', 'Game added to favourites', {
         titleClass: 'center',
         messageClass: 'center',

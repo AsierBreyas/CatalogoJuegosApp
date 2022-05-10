@@ -6,13 +6,15 @@
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li>
-        <a class="navbar-brand" routerLink="" role="link">Home</a>
+        <a class="nav-link" routerLink="catalogo" role="link">Home</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" routerLink="mis-juegos" role="link">My Games </a>
       </li>
-      <li>
-        <img src="../../assets/img/logout.png" class="logout" alt="">
+    </ul>
+    <ul class="nav navbar-nav" style="text-align: right;">
+      <li class="logout">
+        <img src="../../assets/img/logout.png" class="logout" (click)="logout()">
       </li>
     </ul>
   </div>

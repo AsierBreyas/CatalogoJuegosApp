@@ -6,13 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { JuegoComponent } from './juego/juego.component';
 import { MisjuegosComponent } from './misjuegos/misjuegos.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './login/auth.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'catalogo', component: CatalogoComponent },
-  { path: 'mis-juegos', component: MisjuegosComponent },
+  { path: 'catalogo', component: CatalogoComponent, canActivate: [AuthGuard] },
+  { path: 'mis-juegos', component: MisjuegosComponent, canActivate: [AuthGuard] },
   { path: 'catalogo/juegos/:id', component: JuegoComponent },
-  { path: '', component: LoginComponent },
+  { path: '', component: CatalogoComponent  },
 ];
 
 @NgModule({

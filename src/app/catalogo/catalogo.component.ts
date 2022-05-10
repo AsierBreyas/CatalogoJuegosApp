@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JuegosService } from '../api-service/juegos.service';
 import { Catalogo } from '../Models/Catalogo';
 import { Juego } from '../Models/Juego';
 
@@ -9,7 +10,9 @@ import { Juego } from '../Models/Juego';
 })
 export class CatalogoComponent implements OnInit {
   juegos: Juego[] = [];
-  constructor() { }
+  constructor(public juegosService: JuegosService) {
+    juegosService.getAllJuegos();
+  }
 
   ngOnInit(): void {
     setInterval(() => {

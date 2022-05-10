@@ -20,6 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FiltroComponent } from './filtro/filtro.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard } from './login/auth.guard';
 
 @NgModule({
   declarations: [
@@ -43,11 +45,12 @@ import { FiltroComponent } from './filtro/filtro.component';
     FormsModule,
     MatIconModule,
     ReactiveFormsModule,
+    NgbModule,
 
-    
+
     ToastrModule.forRoot(),
   ],
-  providers: [JuegosService,CatalogoComponent],
+  providers: [JuegosService,CatalogoComponent, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

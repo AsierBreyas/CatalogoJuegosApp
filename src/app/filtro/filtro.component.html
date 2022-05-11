@@ -1,11 +1,16 @@
 <div class ="filtro">
+  <h3>Filter</h3>
   <form [formGroup]="form">
-    <label>Título</label>
+    <label>Title</label>
     <input [type]="'text'" [id]="'title'" [formControlName]="'title'">
-    <label>Genero</label>
+    <label>Genre</label>
     <input [type]="'text'" [id]="'genre'" [formControlName]="'genre'">
-    <label>Año de salida</label>
-    <input [type]="'text'" [id]="'year'" [formControlName]="'year'">
-    <button (click)="submitForm()">Filtrar</button>
+    <label>Year of Departure</label>
+    <input [type]="'number'" [id]="'year'" [formControlName]="'year'" min="2000">
+    <br><br>
+    <div class="buttons">
+      <button (click)="submitForm()">Filter</button>
+      <button (click)="cancelForm()">Cancel</button>
+    </div>
   </form>
 </div>

@@ -26,7 +26,7 @@ export class JuegosService {
 
   public getJuegosFiltered(filtro: { title?: string, genre?: string, year?: string}){
     const route = `${this.url}/filter`
-    return this.http.get(route).subscribe((data: any) => {
+    return this.http.get(route,{params: filtro}).subscribe((data: any) => {
       Catalogo.juegos = data
     })
   }

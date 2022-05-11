@@ -1,4 +1,11 @@
-<app-filtro></app-filtro>
+<app-filtro
+(isShowFilter)="toggleFilter($event)"
+*ngIf="isShowFilter"
+>
+</app-filtro>
+<div class="filter-icon">
+  <img src="../../assets/img/filter.svg" class="filter-img" (click)="toggleFilter()">
+</div>
 <div id="catalogoContainer">
   <ng-container *ngIf="juegos">
     <div *ngFor="let juego of juegos" class="cardContainer" routerLink="juegos/{{juego.juegoId}}" role="link">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { JuegosService } from '../api-service/juegos.service';
 import { Catalogo } from '../Models/Catalogo';
 import { Juego } from '../Models/Juego';
@@ -10,6 +10,7 @@ import { Juego } from '../Models/Juego';
 })
 export class CatalogoComponent implements OnInit {
   juegos: Juego[] = [];
+  @Input() isShowFilter;
   constructor(public juegosService: JuegosService) {
     juegosService.getAllJuegos();
   }
@@ -20,5 +21,9 @@ export class CatalogoComponent implements OnInit {
         this.juegos = Catalogo.juegos;
       }
     }, 50);
+  }
+
+  toggleFilter($event?){
+    this.isShowFilter = !this.isShowFilter;
   }
 }

@@ -9,27 +9,28 @@
                 <span>{{juego.title}}</span>
                 <a href="{{juego.game_url}}" target="_blank"><img src="./assets/img/extLink.svg"></a>
             </h1>
-
-            <!-- <section class="splide sectionSlide" aria-label="Splide Basic ">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <li *ngFor="let img of imagenes(juego)" class="splide__slide liImgs ">
-                            <img src="{{img}}" alt="" class="imgCarrousel">
-                        </li>
-                    </ul>
-                </div>
-            </section> -->
-            <section class=" sectionSlide" aria-label="Splide Basic ">
-                <div id="dImgsView">
-                    <img src="{{imgVariable}}" alt="" class="selectedImg"   >
-                </div>
+            <section class="sectionSlide" aria-label="Splide Basic ">
+                <ng-container *ngIf="imgVariable==''; then titulo else imgs">
+                </ng-container>
+                <ng-template #titulo>
+                    <img src="{{juego.thumbnail}}" alt="" class="iSelectedImg">
+                </ng-template>
+                <ng-template #imgs>
+                    <img src="{{imgVariable}}" alt="" class="iSelectedImg">
+                </ng-template>
                 <ul class="imgListSele">
                     <li *ngFor="let img of imagenes(juego)" class="liImgs ">
-                        <img src="{{img}}" alt="" class="unSelectedImg" (click)="changeImg(img)">
+                        <ng-container *ngIf="img[0]==''; then NoImgs else imgsArray">
+                        </ng-container>
+                        <ng-template #NoImgs>
+                            <img src="{{juego.thumbnail}}" alt="" class="iSelectedImg">
+                        </ng-template>
+                        <ng-template #imgsArray>
+                            <img src="{{img}}" alt="" class="unSelectedImg" (click)="changeImg(img)">
+                        </ng-template>
                     </li>
                 </ul>
-
-            </section>
+        </section>
         </div>
         <div class="dCenter">
             <div class="dDescrip">

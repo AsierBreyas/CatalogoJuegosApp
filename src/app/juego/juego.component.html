@@ -9,7 +9,8 @@
                 <span>{{juego.title}}</span>
                 <a href="{{juego.game_url}}" target="_blank"><img src="./assets/img/extLink.svg"></a>
             </h1>
-            <section class="splide sectionSlide" aria-label="Splide Basic HTML Example">
+
+            <!-- <section class="splide sectionSlide" aria-label="Splide Basic ">
                 <div class="splide__track">
                     <ul class="splide__list">
                         <li *ngFor="let img of imagenes(juego)" class="splide__slide liImgs ">
@@ -17,11 +18,22 @@
                         </li>
                     </ul>
                 </div>
+            </section> -->
+            <section class=" sectionSlide" aria-label="Splide Basic ">
+                <div id="dImgsView">
+                    <img src="{{imgVariable}}" alt="" class="selectedImg"   >
+                </div>
+                <ul class="imgListSele">
+                    <li *ngFor="let img of imagenes(juego)" class="liImgs ">
+                        <img src="{{img}}" alt="" class="unSelectedImg" (click)="changeImg(img)">
+                    </li>
+                </ul>
+
             </section>
         </div>
         <div class="dCenter">
             <div class="dDescrip">
-                <p>{{juego.short_description}}{{juego.short_description}}{{juego.short_description}}{{juego.short_description}}
+                <p>{{juego.description}}
                 </p><br>
                 <div class="dBotones">
                     <!-- <button class="btn btn-light btn-outline-primary" type="submit">Add to Favs</button> -->

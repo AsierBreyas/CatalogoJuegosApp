@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { catchError, Observable } from 'rxjs';
 import { Catalogo } from '../Models/Catalogo';
@@ -25,9 +25,8 @@ export class JuegosService {
   }
 
   public getJuegosFiltered(filtro: { title?: string, genre?: string, year?: string}){
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
     const route = `${this.url}/filter`
-    return this.http.get(route,{params: filtro}).subscribe((data: any) => {
-      Catalogo.juegos = data
-    })
+    return this.http.post(route, filtro, {headers: headers}).toPromise()
   }
 }

@@ -3,6 +3,7 @@ export class Juego {
   title!: string;
   thumbnail!: string;
   short_description!: string;
+  description!: string;
   game_url!: string;
   genre!: string;
   plataform!: string;

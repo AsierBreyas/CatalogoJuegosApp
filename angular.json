@@ -34,12 +34,14 @@
               "src/custom-theme.scss",
               "src/styles.sass",
               "./node_modules/ngx-toastr/toastr.css",
-              "./node_modules/bootstrap/scss/bootstrap.scss"
+              "./node_modules/bootstrap/scss/bootstrap.scss",
+              "./node_modules/@splidejs/splide/dist/css/splide.min.css"
             ],
             "scripts": [
               "./node_modules/popper.js/dist/umd/popper.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "./node_modules/@splidejs/splide/dist/js/splide.min.js"
             ]
           },
           "configurations": {

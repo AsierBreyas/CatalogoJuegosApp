@@ -32,6 +32,7 @@ export class JuegoComponent implements OnInit {
 
   loaded = false;
   imgChange = true;
+  imgVariable="";
   ngOnInit(): void {
     this.init();
   }
@@ -75,7 +76,7 @@ export class JuegoComponent implements OnInit {
     });
 
     var splide = new Splide('.splide', {
-      type: 'fade',
+      type: "fade",
       rewind: true,
       perPage: 1,
       autoplay: true,
@@ -83,7 +84,11 @@ export class JuegoComponent implements OnInit {
 
     splide.mount();
   }
-
+  changeImg(i: any){
+    this.imgVariable=i;
+    
+   
+  }
   imagenes(j: Juego) {
     return j.screenshots.split(',');
   }

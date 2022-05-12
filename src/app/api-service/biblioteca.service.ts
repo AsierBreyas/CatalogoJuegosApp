@@ -18,4 +18,9 @@ export class BibliotecaService {
     })
   }
 
+  public removeGame(usuarioId: number, juegoId){
+    const url = `${this.url}/${usuarioId}/${juegoId}`;
+    return this.http.delete(url).toPromise();
+  }
+
 }

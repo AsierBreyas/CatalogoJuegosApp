@@ -9,7 +9,7 @@
 </div>
 <div id="catalogoContainer">
   <ng-container *ngIf="juegos">
-    <div *ngFor="let juego of juegos" class="cardContainer" routerLink="juegos/{{juego.juegoId}}" role="link">
+    <div *ngFor="let juego of juegos" class="cardContainer" routerLink="catalogo/juegos/{{juego.juegoId}}" role="link">
       <div class="card text-white bg-secondary">
         <img class="card-img-top" src="{{ juego.thumbnail }}" alt="Card image cap" />
         <div class="card-body">

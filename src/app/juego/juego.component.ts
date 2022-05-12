@@ -56,6 +56,8 @@ export class JuegoComponent implements OnInit {
     } else {
       // @ts-ignore
       document.getElementById('imgStar').src = './assets/img/baseStar.png';
+      let user = JSON.parse(localStorage.getItem('user') || '{}');
+      this.bibliotecaService.removeGame(user.id, this.juego.juegoId);
       this.toastr.success('', 'Game deleted from favourites', {
         titleClass: 'center',
         messageClass: 'center',

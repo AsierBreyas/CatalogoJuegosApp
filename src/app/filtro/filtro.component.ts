@@ -37,6 +37,7 @@ export class FiltroComponent implements OnInit {
     this.juegosService.getJuegosFiltered(this.form.value).then((data: any) => {
       Catalogo.juegos = data
       this.submit.emit(null);
+      this.isShowFilter.emit(false);
     });
   }
 

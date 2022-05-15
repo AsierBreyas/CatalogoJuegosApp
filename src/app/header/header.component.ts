@@ -11,10 +11,7 @@ export class HeaderComponent implements OnInit {
   menuOption = 'inicio';
   constructor(public router: Router) {}
 
-  fInicio() {
-    this.menuOption = 'inicio';
-    this.router.navigateByUrl('inicio');
-  }
+  
   fMisJuegos() {
     this.menuOption = 'misJuegos';
     this.router.navigateByUrl('mis-juegos');

@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.userService.authUser(this.auth)
       .subscribe((res) => {
         if(res){
-          this.route.navigate(['/catalogo']);
+          this.route.navigate(['']);
         }
       })
       // .then((this.route.navigate(['/catalogo'])))

@@ -5,7 +5,7 @@
     <div class="dMainContainer">
         <div class="dLeft">
             <h1>
-                <img id="imgStar" class="imgFavStar" src="./assets/img/baseStar.png" (click)="favs()">
+                <img id="imgStar" class="imgFavStar" src="{{imgFavs}}" (click)="favs()">
                 <span>{{juego.title}}</span>
                 <a href="{{juego.game_url}}" target="_blank"><img src="./assets/img/extLink.svg"></a>
             </h1>
@@ -18,7 +18,7 @@
                 <ng-template #imgs>
                     <img src="{{imgVariable}}" alt="" class="iSelectedImg">
                 </ng-template>
-                <ul class="imgListSele">
+                <ul class="imgListSele" *ngIf="chekImagenes(juego) > 1;">
                     <li *ngFor="let img of imagenes(juego)" class="liImgs ">
                         <ng-container *ngIf="img[0]==''; then NoImgs else imgsArray">
                         </ng-container>

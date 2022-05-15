@@ -28,20 +28,17 @@ export class JuegoComponent implements OnInit {
     private _location: Location,
     private juegoService: JuegosService,
     private bibliotecaService: BibliotecaService
-  ) {}
+  ) { }
 
   loaded = false;
   imgChange = true;
-  imgVariable="";
+  imgVariable = "";
+  imgFavs = "./assets/img/baseStar.png";
   ngOnInit(): void {
     this.init();
   }
 
   favs() {
-    // Conexion a tabla dela biblioteca del usuario
-
-    //----------------------------------------------
-
     this.toastr.toastrConfig.positionClass = 'toast-top-center';
     if (this.imgChange) {
       // @ts-ignore
@@ -75,22 +72,26 @@ export class JuegoComponent implements OnInit {
       this.juego = response;
     });
 
-    var splide = new Splide('.splide', {
-      type: "fade",
-      rewind: true,
-      perPage: 1,
-      autoplay: true,
-    });
-
-    splide.mount();
+    let user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.bibliotecaService.getUserGames(user.id);
+    Catalogo.juegos.forEach(a => {
+      if (a.juegoId == this.juegoId) {
+        this.imgFavs = "./assets/img/addedStar.png";
+        this.imgChange = false; 
+      }
+    })
   }
-  changeImg(i: any){
-    this.imgVariable=i;
-    
-   
+  changeImg(i: any) {
+    this.imgVariable = i;
+
+
   }
   imagenes(j: Juego) {
     return j.screenshots.split(',');
+  }
+  chekImagenes(j: Juego) {
+    let aImgs = j.screenshots.split(',');
+    return aImgs.length;
   }
   dateFormat(d: any) {
     return d.substring(0, 10);

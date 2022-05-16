@@ -1,25 +1,14 @@
 <app-header></app-header>
-<button
-  class="btn btn-light btn-outline-primary dTopBtnBack"
-  type="submit"
-  (click)="retroceder()"
->
+<button class="btn btn-light btn-outline-primary dTopBtnBack" type="submit" (click)="retroceder()">
   <img src="../../assets/img/backBlueWhite.png" alt="" />Back
 </button>
 <ng-container *ngIf="juego">
   <div class="dMainContainer">
     <div class="dLeft">
       <h1>
-        <img
-          id="imgStar"
-          class="imgFavStar"
-          src="{{ imgFavs }}"
-          (click)="favs()"
-        />
+        <img id="imgStar" class="imgFavStar" src="{{ imgFavs }}" (click)="favs()" />
         <span>{{ juego.title }}</span>
-        <a href="{{ juego.game_url }}" target="_blank"
-          ><img src="./assets/img/extLink.svg"
-        /></a>
+        <a href="{{ juego.game_url }}" target="_blank"><img src="./assets/img/extLink.svg" /></a>
       </h1>
       <section class="sectionSlide" aria-label="Splide Basic ">
         <ng-container *ngIf="imgVariable == ''; then titulo; else imgs">
@@ -38,12 +27,7 @@
               <img src="{{ juego.thumbnail }}" alt="" class="iSelectedImg" />
             </ng-template>
             <ng-template #imgsArray>
-              <img
-                src="{{ img }}"
-                alt=""
-                class="unSelectedImg"
-                (click)="changeImg(img)"
-              />
+              <img src="{{ img }}" alt="" id="i{{img}}" class="unSelectedImg" (click)="changeImg(img)" />
             </ng-template>
           </li>
         </ul>
@@ -56,11 +40,7 @@
       </div>
       <div class="dBotones">
         <!-- <button class="btn btn-light btn-outline-primary" type="submit">Add to Favs</button> -->
-        <button
-          class="btn btn-light btn-outline-primary"
-          type="submit"
-          (click)="retroceder()"
-        >
+        <button class="btn btn-light btn-outline-primary" type="submit" (click)="retroceder()">
           Go back
         </button>
       </div>

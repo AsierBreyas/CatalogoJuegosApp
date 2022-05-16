@@ -12,6 +12,7 @@ import { BibliotecaService } from '../api-service/biblioteca.service';
 import { Biblioteca } from '../Models/Biblioteca';
 import { User } from '../Models/User';
 
+
 @Component({
   selector: 'app-juego',
   templateUrl: './juego.component.html',
@@ -28,12 +29,13 @@ export class JuegoComponent implements OnInit {
     private _location: Location,
     private juegoService: JuegosService,
     private bibliotecaService: BibliotecaService
-  ) {}
+  ) { }
 
   loaded = false;
   imgChange = true;
   imgVariable = '';
   imgFavs = './assets/img/baseStar.png';
+  rutaImgSel="";
   ngOnInit(): void {
     this.init();
   }
@@ -83,6 +85,12 @@ export class JuegoComponent implements OnInit {
   }
   changeImg(i: any) {
     this.imgVariable = i;
+    if (this.rutaImgSel=="") {
+      this.rutaImgSel=i;
+    }
+    document.getElementById(`i${this.rutaImgSel}`)?.classList.replace("SelectedImg","unSelectedImg");
+    this.rutaImgSel=i;
+    document.getElementById(`i${this.rutaImgSel}`)?.classList.replace("unSelectedImg","SelectedImg");
   }
   imagenes(j: Juego) {
     return j.screenshots.split(',');

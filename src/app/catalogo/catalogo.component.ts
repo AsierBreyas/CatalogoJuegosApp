@@ -14,17 +14,17 @@ import { Juego } from '../Models/Juego';
       transition(
         ':enter', 
         [
-          style({ height: 0, opacity: 0, zIndex: 100 }),
+          style({opacity: 0, zIndex: 100, position: 'relative' }),
           animate('1s ease-out', 
-                  style({ height: 300, opacity: 1, zIndex: 100 }))
+                  style({ opacity: 1, zIndex: 100, position: 'relative' }))
         ]
       ),
       transition(
         ':leave', 
         [
-          style({ height: 300, opacity: 1, zIndex: 100 }),
+          style({opacity: 1, zIndex: 100, position: 'relative' }),
           animate('1s ease-in', 
-                  style({ height: 0, opacity: 0, zIndex: 100 }))
+                  style({ height: 0, opacity: 0, zIndex: 100, position: 'relative' }))
         ]
       )
     ])

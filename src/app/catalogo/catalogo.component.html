@@ -1,11 +1,17 @@
-<app-filtro [@popFilter]
-(isShowFilter)="toggleFilter($event)"
-(submit)="reloadValues($event)"
-*ngIf="isShowFilter"
+<app-header></app-header>
+<app-filtro
+  [@popFilter]
+  (isShowFilter)="toggleFilter($event)"
+  (submit)="reloadValues($event)"
+  *ngIf="isShowFilter"
 >
 </app-filtro>
 <div class="filter-icon" *ngIf="!isShowFilter">
-  <img src="../../assets/img/filter.svg" class="filter-img" (click)="toggleFilter()">
+  <img
+    src="../../assets/img/filter.svg"
+    class="filter-img"
+    (click)="toggleFilter()"
+  />
 </div>
 <div id="catalogoContainer">
   <ng-container *ngIf="juegos">

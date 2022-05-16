@@ -1,3 +1,4 @@
+import { state, style } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -23,7 +24,6 @@ export class FiltroComponent implements OnInit {
     private fb: FormBuilder,
     private juegosService: JuegosService
   ) {}
-
   ngOnInit(): void {
     this.form = this.fb.group({
       title: [null, [Validators.maxLength(100)]],

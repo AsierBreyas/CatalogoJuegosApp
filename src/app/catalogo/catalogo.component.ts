@@ -1,4 +1,6 @@
+import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { bufferToggle } from 'rxjs';
 import { JuegosService } from '../api-service/juegos.service';
 import { Catalogo } from '../Models/Catalogo';
 import { Juego } from '../Models/Juego';
@@ -7,6 +9,26 @@ import { Juego } from '../Models/Juego';
   selector: 'app-catalogo',
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.sass'],
+  animations: [
+    trigger('popFilter', [
+      transition(
+        ':enter', 
+        [
+          style({ height: 0, opacity: 0, zIndex: 100 }),
+          animate('1s ease-out', 
+                  style({ height: 300, opacity: 1, zIndex: 100 }))
+        ]
+      ),
+      transition(
+        ':leave', 
+        [
+          style({ height: 300, opacity: 1, zIndex: 100 }),
+          animate('1s ease-in', 
+                  style({ height: 0, opacity: 0, zIndex: 100 }))
+        ]
+      )
+    ])
+  ]
 })
 export class CatalogoComponent implements OnInit {
   juegos: Juego[] = Catalogo.juegos;
@@ -22,7 +44,6 @@ export class CatalogoComponent implements OnInit {
   toggleFilter($event?){
     this.isShowFilter = !this.isShowFilter;
   }
-
   reloadValues($event){
     console.log('pasa')
     this.juegos = Catalogo.juegos

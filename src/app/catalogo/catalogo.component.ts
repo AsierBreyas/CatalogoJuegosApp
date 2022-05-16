@@ -31,26 +31,27 @@ import { Juego } from '../Models/Juego';
   ]
 })
 export class CatalogoComponent implements OnInit {
-  juegos: Juego[] = Catalogo.juegos;
+  juegos: Juego[];
   @Input() isShowFilter;
-  constructor(public juegosService: JuegosService) {
-    juegosService.getAllJuegos();
+  constructor(public juegosService: JuegosService) {}
+
+  async ngOnInit() {
+    await this.juegosService.getAllJuegos();
+    this.juegos = Catalogo.juegos;
+    this.onInit();
   }
 
-  ngOnInit(): void {
-    this.onInit()
-  }
-
-  toggleFilter($event?){
+  toggleFilter($event?) {
     this.isShowFilter = !this.isShowFilter;
   }
-  reloadValues($event){
-    console.log('pasa')
-    this.juegos = Catalogo.juegos
-    console.log(this.juegos)
+
+  reloadValues($event) {
+    console.log('pasa');
+    this.juegos = Catalogo.juegos;
+    console.log(this.juegos);
   }
 
-  onInit(){
+  onInit() {
     setInterval(() => {
       if (!this.juegos.length) {
         this.juegos = Catalogo.juegos;

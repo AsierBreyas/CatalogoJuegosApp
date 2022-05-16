@@ -14,17 +14,17 @@
         <ng-container *ngIf="imgVariable == ''; then titulo; else imgs">
         </ng-container>
         <ng-template #titulo>
-          <img src="{{ juego.thumbnail }}" alt="" class="iSelectedImg" />
+          <img src="{{ juego.thumbnail }}" id="iActual" alt="" class="iSelectedImg" />
         </ng-template>
         <ng-template #imgs>
-          <img src="{{ imgVariable }}" alt="" class="iSelectedImg" />
+          <img src="{{ imgVariable }}" alt="" id="iActual" class="iSelectedImg" />
         </ng-template>
         <ul class="imgListSele" *ngIf="chekImagenes(juego) > 1">
           <li *ngFor="let img of imagenes(juego)" class="liImgs">
             <ng-container *ngIf="img[0] == ''; then NoImgs; else imgsArray">
             </ng-container>
             <ng-template #NoImgs>
-              <img src="{{ juego.thumbnail }}" alt="" class="iSelectedImg" />
+              <img src="{{ juego.thumbnail }}" id="iActual" alt="" class="iSelectedImg" />
             </ng-template>
             <ng-template #imgsArray>
               <img src="{{ img }}" alt="" id="i{{img}}" class="unSelectedImg" (click)="changeImg(img)" />

@@ -6,30 +6,32 @@ import { Biblioteca } from '../Models/Biblioteca';
 import { Catalogo } from '../Models/Catalogo';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BibliotecaService {
-
   public url = environment.apiUrl + '/Biblioteca';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getUserGames(usuarioId: number){
-    const url = `${this.url}/${usuarioId}`
-    return this.http.get(url).subscribe((data: any) => {
-      console.log(data)
-      Catalogo.juegos = data;
-    });
+  public getUserGames(usuarioId: number) {
+    const url = `${this.url}/${usuarioId}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((data: any) => {
+        Catalogo.juegos = data;
+      });
   }
 
-  public addGame(biblioteca: Biblioteca): any{
-    return this.http.post<Biblioteca>(this.url , biblioteca).subscribe(data =>{
-      data = biblioteca
-    })
+  public addGame(biblioteca: Biblioteca): any {
+    return this.http
+      .post<Biblioteca>(this.url, biblioteca)
+      .subscribe((data) => {
+        data = biblioteca;
+      });
   }
 
-  public removeGame(usuarioId: number, juegoId){
+  public removeGame(usuarioId: number, juegoId) {
     const url = `${this.url}/${usuarioId}/${juegoId}`;
     return this.http.delete(url).toPromise();
   }
-
 }

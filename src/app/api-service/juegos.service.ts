@@ -13,10 +13,13 @@ export class JuegosService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllJuegos(): void {
-    this.http.get(`${this.url}`).subscribe((data: any) => {
-      Catalogo.juegos = data;
-    });
+  public getAllJuegos() {
+    return this.http
+      .get(`${this.url}`)
+      .toPromise()
+      .then((data: any) => {
+        Catalogo.juegos = data;
+      });
   }
 
   public getJuego(id: number) {
@@ -24,9 +27,16 @@ export class JuegosService {
     return this.http.get<Juego>(route);
   }
 
-  public getJuegosFiltered(filtro: { title?: string, genre?: string, year?: string}){
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    const route = `${this.url}/filter`
-    return this.http.post(route, filtro, {headers: headers}).toPromise()
+  public getJuegosFiltered(filtro: {
+    title?: string;
+    genre?: string;
+    year?: string;
+  }) {
+    const headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/json; charset=utf-8'
+    );
+    const route = `${this.url}/filter`;
+    return this.http.post(route, filtro, { headers: headers }).toPromise();
   }
 }

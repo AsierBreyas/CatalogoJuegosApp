@@ -7,33 +7,30 @@ import { Juego } from '../Models/Juego';
 @Component({
   selector: 'app-misjuegos',
   templateUrl: './misjuegos.component.html',
-  styleUrls: ['./misjuegos.component.sass']
+  styleUrls: ['./misjuegos.component.sass'],
 })
 export class MisjuegosComponent implements OnInit {
-
-  juegos: Juego[] = Catalogo.juegos;
+  juegos: Juego[];
   @Input() isShowFilter;
-  constructor(public bibliotecaService: BibliotecaService) {
+  constructor(public bibliotecaService: BibliotecaService) {}
+
+  async ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user') || '{}');
-    bibliotecaService.getUserGames(user.id);
+    await this.bibliotecaService.getUserGames(user.id);
+    this.juegos = Catalogo.juegos;
+    this.onInit();
   }
 
-  ngOnInit(): void {
-    this.onInit()
+  reloadValues($event) {
+    console.log('pasa');
+    this.juegos = Catalogo.juegos;
   }
 
-  reloadValues($event){
-    console.log('pasa')
-    this.juegos = Catalogo.juegos
-    console.log(this.juegos)
-  }
-
-  onInit(){
+  onInit() {
     setInterval(() => {
       if (!this.juegos.length) {
         this.juegos = Catalogo.juegos;
       }
     }, 50);
   }
-
 }

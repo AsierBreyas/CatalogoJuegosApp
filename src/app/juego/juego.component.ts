@@ -19,8 +19,8 @@ import { User } from '../Models/User';
 })
 export class JuegoComponent implements OnInit {
   juegoId = 0;
-  juego: Juego = new Juego;
-  biblioteca: Biblioteca = new Biblioteca;
+  juego: Juego = new Juego();
+  biblioteca: Biblioteca = new Biblioteca();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,12 +28,12 @@ export class JuegoComponent implements OnInit {
     private _location: Location,
     private juegoService: JuegosService,
     private bibliotecaService: BibliotecaService
-  ) { }
+  ) {}
 
   loaded = false;
   imgChange = true;
-  imgVariable = "";
-  imgFavs = "./assets/img/baseStar.png";
+  imgVariable = '';
+  imgFavs = './assets/img/baseStar.png';
   ngOnInit(): void {
     this.init();
   }
@@ -66,25 +66,23 @@ export class JuegoComponent implements OnInit {
   retroceder() {
     this._location.back();
   }
-  init() {
+  async init() {
     this.juegoId = +(this.activatedRoute.snapshot.paramMap.get('id') ?? 0);
     this.juegoService.getJuego(this.juegoId).subscribe((response: Juego) => {
       this.juego = response;
     });
 
     let user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.bibliotecaService.getUserGames(user.id);
-    Catalogo.juegos.forEach(a => {
+    await this.bibliotecaService.getUserGames(user.id);
+    Catalogo.juegos.forEach((a) => {
       if (a.juegoId == this.juegoId) {
-        this.imgFavs = "./assets/img/addedStar.png";
-        this.imgChange = false; 
+        this.imgFavs = './assets/img/addedStar.png';
+        this.imgChange = false;
       }
-    })
+    });
   }
   changeImg(i: any) {
     this.imgVariable = i;
-
-
   }
   imagenes(j: Juego) {
     return j.screenshots.split(',');

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { JuegosService } from './api-service/juegos.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'CatalogoJuegosApp';
 
-  constructor(public router: Router) {}
+  constructor(public router: Router,
+    private juegosService: JuegosService) {
+      juegosService.getAllJuegos();
+  }
 }

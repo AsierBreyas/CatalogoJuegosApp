@@ -1,11 +1,12 @@
-export class Juegos {
-  id!: number;
+export class Juego {
+  juegoId!: number;
   title!: string;
   thumbnail!: string;
   short_description!: string;
+  description!: string;
   game_url!: string;
   genre!: string;
-  platform!: string;
+  plataform!: string;
   publisher!: string;
   developer!: string;
   release_date!: Date;

@@ -1,0 +1,16 @@
+<div class ="filtro">
+  <h3>Filter</h3>
+  <form [formGroup]="form">
+    <label>Title</label><br>
+    <input [type]="'text'" [id]="'title'" [formControlName]="'title'">
+    <label>Genre</label><br>
+    <input [type]="'text'" [id]="'genre'" [formControlName]="'genre'">
+    <label>Year of Departure</label><br>
+    <input [type]="'number'" [id]="'year'" [formControlName]="'year'" min="2000">
+    <br><br>
+    <div class="buttons">
+      <button type="button" class="btn btn-light btn-outline-primary" (click)="onSubmitForm()">Filter</button>
+      <button type="button" class="btn btn-light btn-outline-primary" (click)="cancelForm()">Cancel</button>
+    </div>
+  </form>
+</div>

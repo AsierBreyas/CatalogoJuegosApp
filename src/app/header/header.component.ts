@@ -7,20 +7,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.sass'],
 })
 export class HeaderComponent implements OnInit {
+  log="p";
   menuOption = 'inicio';
   constructor(public router: Router) {}
 
-  fInicio() {
-    this.menuOption = 'inicio';
-    this.router.navigateByUrl('inicio');
-  }
+  
   fMisJuegos() {
     this.menuOption = 'misJuegos';
     this.router.navigateByUrl('mis-juegos');
   }
   fCatalogo() {
     this.menuOption = 'catalogo';
-    this.router.navigateByUrl('catalogo');
+    this.router.navigateByUrl('');
+  }
+  fLogout(){
+    localStorage.clear();
+    this.router.navigateByUrl('/login');
   }
   ngOnInit(): void {}
+
+  logout(){
+    localStorage.removeItem('user');
+    this.router.navigate(['/login'])
+  }
 }

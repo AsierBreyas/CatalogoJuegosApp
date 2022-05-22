@@ -1,10 +1,10 @@
 <div class="background">
   <div class="container">
     <div class="form">
-      <form action="#" class="login-form">
-        <input type="text" name="E-mail" placeholder="E-mail" />
-        <input type="text" name="password" placeholder="Password" />
-        <button type="submit" class="btn" (click)="showError()">Login</button>
+      <form class="login-form">
+        <input type="text" name="E-mail" [formControl]="email" placeholder="E-mail" />
+        <input type="password" name="password" [formControl]="password" placeholder="Password" />
+        <button type="button" class="btn" (click)="submitForm()">Login</button>
         <p class="message">
           New User?<a routerLink="/register" routerLinkActive="active">
             Sign in</a

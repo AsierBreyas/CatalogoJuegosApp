@@ -1,1 +1,67 @@
-<p>juego works!</p>
+<app-header></app-header>
+<button class="btn btn-light btn-outline-primary dTopBtnBack" type="submit" (click)="retroceder()">
+  <img src="../../assets/img/backBlueWhite.png" alt="" />Back
+</button>
+<ng-container *ngIf="juego">
+  <div class="dMainContainer">
+    <div class="dLeft">
+      <h1>
+        <img id="imgStar" class="imgFavStar" src="{{ imgFavs }}" (click)="favs()" />
+        <span>{{ juego.title }}</span>
+        <a href="{{ juego.game_url }}" target="_blank"><img src="./assets/img/extLink.svg" /></a>
+      </h1>
+      <section class="sectionSlide" aria-label="Splide Basic ">
+        <ng-container *ngIf="imgVariable === ''; then titulo; else imgs">
+        </ng-container>
+        <ng-template #titulo>
+          <img src="{{ juego.thumbnail }}" id="iActual" alt="" class="iSelectedImg" />
+        </ng-template>
+        <ng-template #imgs>
+          <img src="{{ imgVariable }}" alt="" id="iActual" class="iSelectedImg" />
+        </ng-template>
+        <ul class="imgListSele" *ngIf="chekImagenes(juego) > 1">
+          <li *ngFor="let img of imagenes(juego)" class="liImgs">
+            <ng-container *ngIf="img[0] === ''; then NoImgs; else imgsArray">
+            </ng-container>
+            <ng-template #NoImgs>
+              <img src="{{ juego.thumbnail }}" id="iActual" alt="" class="iSelectedImg" />
+            </ng-template>
+            <ng-template #imgsArray>
+              <img src="{{ img }}" alt="" id="i{{img}}" class="unSelectedImg" (click)="changeImg(img)" />
+            </ng-template>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="dCenter">
+      <div class="dDescrip">
+        <p>{{ juego.description }}</p>
+        <br />
+      </div>
+      <div class="dBotones">
+        <!-- <button class="btn btn-light btn-outline-primary" type="submit">Add to Favs</button> -->
+        <button class="btn btn-light btn-outline-primary" type="submit" (click)="retroceder()">
+          Go back
+        </button>
+      </div>
+    </div>
+    <div class="dRight">
+      <h4>Specifications</h4>
+      <br />
+      <p><span>Platform: </span>{{ juego.plataform }}</p>
+      <p><span>Publisher: </span>{{ juego.publisher }}</p>
+      <p><span>Developer: </span>{{ juego.developer }}</p>
+      <p><span>Release date: </span>{{ dateFormat(juego.release_date) }}</p>
+      <p><span>Genre: </span>{{ juego.genre }}</p>
+      <div class="dMinReqs">
+        <h6>Minimun requirements</h6>
+        <br />
+        <p><span>Operating System: </span>{{ juego.os }}</p>
+        <p><span>Processor: </span>{{ juego.processor }}</p>
+        <p><span>Memory: </span>{{ juego.memory }}</p>
+        <p><span>Graphics date: </span>{{ juego.graphics }}</p>
+        <p><span>Storage: </span>{{ juego.storage }}</p>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -2,7 +2,7 @@
 <app-filtro
   [@popFilter]
   (isShowFilter)="toggleFilter($event)"
-  (submit)="reloadValues($event)"
+  (submitForm)="reloadValues($event)"
   *ngIf="isShowFilter"
 >
 </app-filtro>

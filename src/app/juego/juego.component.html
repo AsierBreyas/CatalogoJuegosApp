@@ -11,7 +11,7 @@
         <a href="{{ juego.game_url }}" target="_blank"><img src="./assets/img/extLink.svg" /></a>
       </h1>
       <section class="sectionSlide" aria-label="Splide Basic ">
-        <ng-container *ngIf="imgVariable == ''; then titulo; else imgs">
+        <ng-container *ngIf="imgVariable === ''; then titulo; else imgs">
         </ng-container>
         <ng-template #titulo>
           <img src="{{ juego.thumbnail }}" id="iActual" alt="" class="iSelectedImg" />
@@ -21,7 +21,7 @@
         </ng-template>
         <ul class="imgListSele" *ngIf="chekImagenes(juego) > 1">
           <li *ngFor="let img of imagenes(juego)" class="liImgs">
-            <ng-container *ngIf="img[0] == ''; then NoImgs; else imgsArray">
+            <ng-container *ngIf="img[0] === ''; then NoImgs; else imgsArray">
             </ng-container>
             <ng-template #NoImgs>
               <img src="{{ juego.thumbnail }}" id="iActual" alt="" class="iSelectedImg" />

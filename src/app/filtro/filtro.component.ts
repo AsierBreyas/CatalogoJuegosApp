@@ -2,6 +2,7 @@ import { state, style } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, timeout } from 'rxjs';
 import { JuegosService } from '../api-service/juegos.service';
 import { Catalogo } from '../Models/Catalogo';
@@ -16,13 +17,14 @@ export class FiltroComponent implements OnInit {
 
   @Output() juegos: Juego[] = []
   @Output() isShowFilter = new EventEmitter()
-  @Output() submit = new EventEmitter()
+  @Output() submitForm = new EventEmitter()
   form: FormGroup;
 
 
   constructor(
     private fb: FormBuilder,
-    private juegosService: JuegosService
+    private juegosService: JuegosService,
+    private toaster:ToastrService
   ) {}
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -32,12 +34,17 @@ export class FiltroComponent implements OnInit {
     })
   }
 
-  submitForm(){
+  onSubmitForm(){
     console.log(this.form.value)
     this.juegosService.getJuegosFiltered(this.form.value).then((data: any) => {
       Catalogo.juegos = data
-      this.submit.emit(null);
-      this.isShowFilter.emit(false);
+      if(data.length < 1){
+        this.toaster.error('No matching results found')
+      }else{
+        Catalogo.juegos = data
+        this.submitForm.emit(null);
+        this.isShowFilter.emit(false);
+      }
     });
   }
 

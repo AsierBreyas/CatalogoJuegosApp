@@ -2,7 +2,6 @@ import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } fro
 import { ActivatedRoute } from '@angular/router';
 import { CatalogoComponent } from '../catalogo/catalogo.component';
 import { Catalogo } from '../Models/Catalogo';
-import Splide, { FADE } from '@splidejs/splide';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { JuegosService } from '../api-service/juegos.service';
@@ -11,34 +10,12 @@ import { Observable } from 'rxjs';
 import { BibliotecaService } from '../api-service/biblioteca.service';
 import { Biblioteca } from '../Models/Biblioteca';
 import { User } from '../Models/User';
-import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
-
 
 
 @Component({
   selector: 'app-juego',
   templateUrl: './juego.component.html',
-  styleUrls: ['./juego.component.sass'],
-  animations: [
-    trigger('popImg', [
-      transition(
-        ':enter', 
-        [
-          style({opacity: 0, zIndex: 100, position: 'relative' }),
-          animate('0.5s ease-out', 
-                  style({ opacity: 1, zIndex: 100, position: 'relative' }))
-        ]
-      ),
-      transition(
-        ':leave', 
-        [
-          style({opacity: 1, zIndex: 100, position: 'relative' }),
-          animate('0.5s ease-in', 
-                  style({ height: 0, opacity: 0, zIndex: 100, position: 'relative' }))
-        ]
-      )
-    ])
-  ]
+  styleUrls: ['./juego.component.sass']
 })
 
 export class JuegoComponent implements OnInit {
